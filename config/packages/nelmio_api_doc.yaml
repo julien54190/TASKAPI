@@ -1,0 +1,9 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: API de gestion de tâches
+            description: Une API Symfony sécurisée avec JWT pour gérer des tâches
+            version: 1.0.0
+    areas:
+        default:
+            path_patterns: [ ^/api ] 
