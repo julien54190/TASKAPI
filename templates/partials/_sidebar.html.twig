@@ -5,7 +5,7 @@
 			ajouter une tache</span>
 	</a>
 	<ul class="sidebar-nav py-20">
-		<a href="#">
+		<a href="{{ path('home') }}" {% if app.request.pathinfo == path('home') %}class="active"{% endif %}>
 			<i class="fa-solid fa-home mr-5"></i>
 			Liste des tâches
 		</a>

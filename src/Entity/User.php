@@ -8,9 +8,10 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -127,5 +128,11 @@ class User
         }
 
         return $this;
+    }
+
+    // Méthode de l'interface PasswordAuthenticatedUserInterface
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
     }
 }
