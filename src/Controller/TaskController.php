@@ -10,11 +10,17 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Response as Reponse;
 
 final class TaskController extends AbstractController
 {
     public function __construct(private Security $security){}
+
+    #[Route('/', name: 'home')]
+    public function index(): Reponse
+    {
+        return $this->render('task/index.html.twig');
+    }
     #[Route('api/tasks', methods: ['GET'])]
     public function list(Request $request, EntityManagerInterface $em): JsonResponse
     {
